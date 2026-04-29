@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import QueryProvider from "@/providers/query-provider";
 
 export const metadata: Metadata = {
   title: "CISM Stall",
@@ -18,7 +19,9 @@ export default function RootLayout({
       className={`h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
+        <QueryProvider>
+          {children}
+        </QueryProvider>
         <Toaster
           position="top-center"
           toastOptions={{
@@ -38,3 +41,4 @@ export default function RootLayout({
     </html>
   );
 }
+
